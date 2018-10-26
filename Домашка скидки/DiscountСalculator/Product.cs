@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DiscountСalculator
 {
@@ -8,45 +9,28 @@ namespace DiscountСalculator
         public int Price { get; set; }
     }
 
-    public class Discount : IDiscount
+    public class Discount : DiscountMessages
     {
         public int DiscountValue { get; set; }
         public DateTime? StartSellDate { get; set; }
         public DateTime? EndSellDate { get; set; }
-        private int Price;
-        private bool Type;
-        private int DiscountPrice;
-
-        public Discount(int Price, bool Type, int DiscountPrice)
+        public int Calculate(List<int> Param, Func<List<int>, int> func)
         {
-            this.Price = Price;
-            this.Type = Type;
-            this.DiscountPrice = DiscountPrice;
+            return func(Param);
         }
+    }
 
-        public int CalculateDiscount()
+    public class DiscountMessages
+    {
+        string SellMessage = "В настоящий момент на данный товар нет скидок.";
+
+        public void SetSellInformation(string Message)
         {
-            if (Type)
-            {
-                return DiscountValue != 0 &&
-                    StartSellDate.HasValue &&
-                    EndSellDate.HasValue &&
-                    StartSellDate <= DateTime.UtcNow &&
-                    EndSellDate >= DateTime.UtcNow
-                    ? (Price * DiscountValue / 100)
-                    : 0;
-            }
-            return (DiscountPrice < Price) ? DiscountValue : 0;
+            SellMessage = Message;
         }
-
         public string GetSellInformation()
         {
-            string a = "р.";
-            if (Type) { a = "%"; }
-            return DiscountValue != 0 && DiscountPrice < Price && StartSellDate.HasValue && EndSellDate.HasValue
-                ? $"На данный товар действует скидка {DiscountValue}{a} в период с {StartSellDate.Value.ToShortDateString()} по {EndSellDate.Value.ToShortDateString()}. " +
-                    $"Сумма с учётом скидки - {Price - CalculateDiscount()}р."
-                : "В настоящий момент на данный товар нет скидок.";
+            return SellMessage;
         }
     }
 }
