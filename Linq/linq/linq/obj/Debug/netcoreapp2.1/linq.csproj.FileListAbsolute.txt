@@ -1,0 +1,11 @@
+D:\SourceTreeRep\Linq\linq\linq\bin\Debug\netcoreapp2.1\linq.deps.json
+D:\SourceTreeRep\Linq\linq\linq\bin\Debug\netcoreapp2.1\linq.runtimeconfig.json
+D:\SourceTreeRep\Linq\linq\linq\bin\Debug\netcoreapp2.1\linq.runtimeconfig.dev.json
+D:\SourceTreeRep\Linq\linq\linq\bin\Debug\netcoreapp2.1\linq.dll
+D:\SourceTreeRep\Linq\linq\linq\bin\Debug\netcoreapp2.1\linq.pdb
+D:\SourceTreeRep\Linq\linq\linq\obj\Debug\netcoreapp2.1\linq.csprojAssemblyReference.cache
+D:\SourceTreeRep\Linq\linq\linq\obj\Debug\netcoreapp2.1\linq.csproj.CoreCompileInputs.cache
+D:\SourceTreeRep\Linq\linq\linq\obj\Debug\netcoreapp2.1\linq.AssemblyInfoInputs.cache
+D:\SourceTreeRep\Linq\linq\linq\obj\Debug\netcoreapp2.1\linq.AssemblyInfo.cs
+D:\SourceTreeRep\Linq\linq\linq\obj\Debug\netcoreapp2.1\linq.dll
+D:\SourceTreeRep\Linq\linq\linq\obj\Debug\netcoreapp2.1\linq.pdb
