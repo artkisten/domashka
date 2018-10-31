@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Product>
+@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "Товары";
+}
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+
+<div class="container">
+    <h2>Список товаров</h2>
+    <table class="table">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Наименование
+                </th>
+                <th>
+                    Цена
+                </th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelitem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Удалить", "Delete", "Product", new { deleteid = item.Id }, new { htmlAttributes = new { @class = "btn btn-info", id = item.Id } })
+                </td>
+            </tr>
+        }
+    </table>
+    @Html.ActionLink("Добавить товар", "AddProduct", "Product", null, new { @class = "btn btn-primary" })
+</div>
+
+
+

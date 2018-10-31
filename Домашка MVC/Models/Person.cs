@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Shop.Models
+{
+    public class Person
+    {
+        public Person()
+        {
+            List<GiftCard> Giftcards = new List<GiftCard>();
+        }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public List<GiftCard> Giftcards { get; set; }
+        
+}
+}

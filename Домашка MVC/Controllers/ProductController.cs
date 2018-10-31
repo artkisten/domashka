@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Shop.Data;
+using Microsoft.Extensions.Configuration;
+using Shop.Models;
+
+namespace Shop.Controllers
+{
+    public class ProductController : Controller
+    {
+        public IConfiguration Configuration { get; }
+        ShopContext db;
+        public ProductController(IConfiguration configuration)
+        {
+            Configuration = configuration;
+            var optionBuilder = new DbContextOptionsBuilder();
+            optionBuilder.UseSqlServer(Configuration.GetConnectionString("ShopContext"));
+            db = new ShopContext(optionBuilder.Options);
+        }
+        public IActionResult Index()
+        {
+            var products = db.Products.ToList();
+            return View(products);            
+        } 
+        public IActionResult Add(Product product)
+        {                      
+            db.Products.Add(product);
+            db.SaveChanges();
+            return Redirect("index");
+        }
+        public IActionResult AddProduct()
+        {
+            return View();
+        }
+        public IActionResult Delete(int deleteid)
+        {
+            var prod = db.Products.First(x => x.Id == deleteid);
+            db.Products.Remove(prod);
+            db.SaveChanges();
+            return Redirect("index");
+        }
+    }
+}
