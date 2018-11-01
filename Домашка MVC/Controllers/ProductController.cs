@@ -7,19 +7,21 @@ using Microsoft.EntityFrameworkCore;
 using Shop.Data;
 using Microsoft.Extensions.Configuration;
 using Shop.Models;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Shop.Controllers
 {
     public class ProductController : Controller
     {
         public IConfiguration Configuration { get; }
-        ShopContext db;
-        public ProductController(IConfiguration configuration)
+        private readonly ShopContext db;
+        public ProductController(ShopContext context)
         {
-            Configuration = configuration;
-            var optionBuilder = new DbContextOptionsBuilder();
-            optionBuilder.UseSqlServer(Configuration.GetConnectionString("ShopContext"));
-            db = new ShopContext(optionBuilder.Options);
+            db = context;
+            //Configuration = configuration;
+            //var optionBuilder = new DbContextOptionsBuilder();
+            //optionBuilder.UseSqlServer(Configuration.GetConnectionString("ShopContext"));
+            //db = new ShopContext(optionBuilder.Options);
         }
         public IActionResult Index()
         {
