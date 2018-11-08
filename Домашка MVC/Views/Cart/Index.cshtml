@@ -1,0 +1,49 @@
+﻿@model OrderViewModel
+
+@{
+    var title = "Товары в корзине";
+    ViewData["Title"] = title;
+}
+
+<h2>@title</h2>
+
+@if (Model != null) { 
+<div class="container">
+    <h3>Номер заказа: @Model.Number</h3>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Название продукта</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Итог</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.ProductPrice</td>
+                    <td>@item.Count</td>
+                    <td>@item.TotalSum</td>
+                    <td>@Html.ActionLink("Удалить", "Delete", "Cart", new { deleteid = item.ProductId }, new { @id = item.ProductId } )</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Стоимость заказа: @Model.TotalSum</h3>
+    @Html.ActionLink("Оформить заказ", "CompleteOrder", "Cart", null, new { @class = "btn btn-primary" } )
+</div>
+}
+else
+{
+    <div class="container"><P>В корзине нет товаров</P></div>
+}
+
+
+
+

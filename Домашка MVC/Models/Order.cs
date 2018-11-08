@@ -14,6 +14,7 @@ namespace Shop.Models
 
         public int Id { get; set; }
         public string Number { get; set; }
+        public string Status { get; set; }
         public List<OrderItem> Items { get; set; }
         //public Discount Discount { get; set; }
 

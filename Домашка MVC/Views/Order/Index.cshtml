@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ProductViewModel>
+@{
+    ViewData["Title"] = "Товары";
+}
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+
+<div class="container">
+    <h2>Список товаров</h2>
+    <table class="table">
+        @foreach (var product in Model)
+        {
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Наименование
+            </th>
+            <th>
+                Цена
+            </th>
+            <th></th>
+            <th>
+                Добавлено в корзину
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelitem => product.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => product.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => product.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Добавить в корзину", "AddToCart", "Order", new { addid = product.Id }, new { @id = product.Id })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => product.InCart)
+            </td>
+        </tr>
+        }
+
+    </table>
+</div>
+
+
+
+

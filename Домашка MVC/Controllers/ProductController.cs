@@ -8,12 +8,13 @@ using Shop.Data;
 using Microsoft.Extensions.Configuration;
 using Shop.Models;
 using Microsoft.Extensions.DependencyInjection;
+using Shop.ViewModel;
 
 namespace Shop.Controllers
 {
     public class ProductController : Controller
     {
-        public IConfiguration Configuration { get; }
+        //public IConfiguration Configuration { get; }
         private readonly ShopContext db;
         public ProductController(ShopContext context)
         {
@@ -25,8 +26,7 @@ namespace Shop.Controllers
         }
         public IActionResult Index()
         {
-            var products = db.Products.ToList();
-            return View(products);            
+            return View(db.Products.ToList());
         } 
         public IActionResult Add(Product product)
         {                      

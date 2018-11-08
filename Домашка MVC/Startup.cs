@@ -60,7 +60,7 @@ namespace Shop
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Product}/{action=Index}/{id?}");
+                    template: "{controller=Order}/{action=List}/{id?}");
             });
         }
     }
